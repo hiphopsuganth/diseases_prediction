@@ -1,0 +1,38 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Hide overflow to only show images within the tray */
+  }
+  
+  .carousel-inner {
+    display: flex;
+    width: 300%; /* Adjust based on the number of slides */
+    animation: slide 10s infinite linear; /* Apply animation for sliding effect */
+  }
+  
+  .carousel-item {
+    flex: 1 0 100%; /* Each slide takes full width of the carousel */
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Animation to slide the images */
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    33% {
+      transform: translateX(-100%);
+    }
+    66% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
