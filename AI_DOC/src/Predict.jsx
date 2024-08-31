@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import Navbar from './components/Navbar'
+import './components/App.css'
 
-// Step 1: Define all symptoms with their weights as options
 const options = [
   { value: 'itching', label: 'Itching' },
   { value: 'skin_rash', label: 'Skin Rash' },
@@ -149,6 +150,8 @@ const MultiSelectDropdown = () => {
 
   return (
     <div>
+        <Navbar />
+      <div className='predict'>
       <h3>Select Symptoms</h3>
       <Select
         options={options}
@@ -157,7 +160,6 @@ const MultiSelectDropdown = () => {
         onChange={handleSelectChange}
         placeholder="Select symptoms..."
       />
-      {/* Step 4: Display selected items as tags */}
       <div style={{ marginTop: '20px' }}>
         {selectedOptions.map(option => (
           <span key={option.value} style={{
@@ -172,7 +174,8 @@ const MultiSelectDropdown = () => {
           </span>
         ))}
       </div>
-    </div>
+     </div>
+   </div>
   );
 };
 

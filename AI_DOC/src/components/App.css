@@ -4,7 +4,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: -1;
   border-width: 20px;
 }
 .navbar {
@@ -91,3 +90,17 @@
   background-color: lightseagreen;
   width: 200px;
 }
+.predict {
+  position: relative;
+  background-color: #2980c7;
+  margin-top: 100px;
+  height: 100px;
+}
+ .predict h3 {
+   text-align: center;
+ }
+
+ .predict select {
+  background-color: #e0f1f1;
+ }
+ 
