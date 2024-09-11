@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import './predict.css';
 import Select from 'react-select';
-import Navbar from './components/Navbar'
-import './components/App.css'
+
+
 
 const options = [
   { value: 'itching', label: 'Itching' },
@@ -137,21 +138,19 @@ const options = [
   { value: 'red_sore_around_nose', label: 'Red Sore Around Nose' },
   { value: 'yellow_crust_ooze', label: 'Yellow Crust Ooze' },
   { value: 'prognosis', label: 'Prognosis' }
+ 
 ];
 
 const MultiSelectDropdown = () => {
-  // Step 2: Use state to manage selected options
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  // Step 3: Handle selection changes
   const handleSelectChange = (selected) => {
     setSelectedOptions(selected);
   };
 
   return (
-    <div>
-        <Navbar />
-      <div className='predict'>
+    
+    <div className="container">
       <h3>Select Symptoms</h3>
       <Select
         options={options}
@@ -160,22 +159,14 @@ const MultiSelectDropdown = () => {
         onChange={handleSelectChange}
         placeholder="Select symptoms..."
       />
-      <div style={{ marginTop: '20px' }}>
+      <div className="tags-container">
         {selectedOptions.map(option => (
-          <span key={option.value} style={{
-            display: 'inline-block',
-            backgroundColor: '#007bff',
-            color: 'white',
-            padding: '5px 10px',
-            borderRadius: '20px',
-            margin: '5px',
-          }}>
+          <span key={option.value} className="tag">
             {option.label}
           </span>
         ))}
       </div>
-     </div>
-   </div>
+    </div>
   );
 };
 

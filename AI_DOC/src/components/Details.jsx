@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Details.css';
 import Navbar from './Navbar';
-import { Link ,Navigate,useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Details = ({ onClose }) => {
+const Details = () => {
     const [formData, setFormData] = useState({
         name: '',
         gender: '',
@@ -12,7 +12,8 @@ const Details = ({ onClose }) => {
         phone: '',
     });
 
-    
+    const [submitted, setSubmitted] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -26,6 +27,28 @@ const Details = ({ onClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form Data:', formData);
+        
+        // Send data to the Flask backend
+        fetch('http://127.0.0.1:5000/submit-details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            setSuccessMessage('Submitted successfully!');
+            setSubmitted(true); // Set form as submitted
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    };
+
+    // Function to navigate to the Predict page
+    const goToPredictPage = () => {
         navigate('/Predict');
     };
 
@@ -60,10 +83,18 @@ const Details = ({ onClose }) => {
                         <label>Phone Number:</label>
                         <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
                     </div>
-                    {/* <Link to="/Predict"> */}
                     <button type="submit">Submit</button>
-                    {/* </Link> */}
                 </form>
+                
+                {/* Modal-style message box */}
+                {submitted && (
+                    <div className="modal">
+                        <div className="modal-content">
+                            <p>{successMessage}</p>
+                            <button onClick={goToPredictPage}>Next</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -1,24 +1,30 @@
 /* containers class to hold the Navbar, form, and carousel */
+
 .containers {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
+    /* Stack items vertically */
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full height of the viewport */
-    background-image: url('herbal1.jpg'); /* Replace with your background image */
+    height: 100vh;
+    /* Full height of the viewport */
+    background-image: url('herbal1.jpg');
+    /* Replace with your background image */
     background-size: cover;
 }
 
 .form-containers {
     position: absolute;
-    background-color: #000000;
+    background-color: transparent;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Limit the form width */
+    max-width: 400px;
+    /* Limit the form width */
     text-align: left;
-    margin-bottom: 20px; /* Space between the form and carousel */
+    margin-bottom: 20px;
+    /* Space between the form and carousel */
     z-index: 4;
 }
 
@@ -65,4 +71,49 @@ button {
 
 button:hover {
     background-color: #e35454;
+}
+
+
+/* Modal styles */
+
+.modal {
+    max-width: 400px;
+    width: 400%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.modal-content {
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(77, 72, 72, 0.1);
+}
+
+.modal-content p {
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
 }
